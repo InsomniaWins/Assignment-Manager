@@ -1,0 +1,362 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/AssignmentManager.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.1584, 0.1584, 0.18, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0 )
+border_color = Color( 1, 1, 1, 0.239216 )
+
+[node name="AssignmentManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+modulate = Color( 0.635294, 0.635294, 0.635294, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 240.0
+margin_top = 17.0
+margin_right = -11.0
+margin_bottom = -12.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 849.0
+size_flags_horizontal = 3
+
+[node name="LeftPanel" type="Panel" parent="."]
+anchor_bottom = 1.0
+margin_right = 219.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LeftPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+custom_constants/separation = 11
+
+[node name="Label" type="Label" parent="LeftPanel/HBoxContainer"]
+margin_right = 203.0
+margin_bottom = 14.0
+text = "Sort Assignments:"
+autowrap = true
+
+[node name="SortButtons" type="OptionButton" parent="LeftPanel/HBoxContainer"]
+margin_top = 25.0
+margin_right = 203.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 100, 0 )
+text = "Sort"
+
+[node name="Label2" type="Label" parent="LeftPanel/HBoxContainer"]
+margin_top = 56.0
+margin_right = 203.0
+margin_bottom = 70.0
+text = "Classes:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/HBoxContainer"]
+margin_top = 81.0
+margin_right = 203.0
+margin_bottom = 231.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/bg = SubResource( 2 )
+
+[node name="ClassList" type="VBoxContainer" parent="LeftPanel/HBoxContainer/ScrollContainer"]
+alignment = 1
+
+[node name="AddClassButton" type="Button" parent="LeftPanel/HBoxContainer"]
+margin_top = 242.0
+margin_right = 203.0
+margin_bottom = 262.0
+text = "Add Class"
+
+[node name="AddAssignmentButton" type="Button" parent="LeftPanel/HBoxContainer"]
+margin_top = 273.0
+margin_right = 203.0
+margin_bottom = 293.0
+text = "Add Assignment"
+
+[node name="AddClassPopup" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.0
+margin_top = -52.0
+margin_right = 150.0
+margin_bottom = 93.0
+popup_exclusive = true
+window_title = "Add Class"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddClassPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="LineEdit" type="LineEdit" parent="AddClassPopup/VBoxContainer"]
+margin_right = 267.0
+margin_bottom = 24.0
+placeholder_text = "Class Name"
+
+[node name="AddClassButton" type="Button" parent="AddClassPopup/VBoxContainer"]
+margin_top = 28.0
+margin_right = 267.0
+margin_bottom = 48.0
+text = "Add"
+
+[node name="CancelAddClassButton" type="Button" parent="AddClassPopup"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -32.0
+margin_right = -16.0
+margin_bottom = -16.0
+text = "Cancel"
+
+[node name="AddAssignmentPopup" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.5
+margin_top = -144.5
+margin_right = 149.5
+margin_bottom = 144.5
+popup_exclusive = true
+window_title = "Add Assignment"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddAssignmentPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer"]
+margin_right = 267.0
+margin_bottom = 14.0
+text = "Selected Class"
+
+[node name="OptionButton" type="OptionButton" parent="AddAssignmentPopup/VBoxContainer"]
+margin_top = 24.0
+margin_right = 267.0
+margin_bottom = 44.0
+
+[node name="LineEdit" type="LineEdit" parent="AddAssignmentPopup/VBoxContainer"]
+margin_top = 54.0
+margin_right = 267.0
+margin_bottom = 78.0
+text = "Assignment Name"
+placeholder_text = "Class Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AddAssignmentPopup/VBoxContainer"]
+margin_top = 88.0
+margin_right = 267.0
+margin_bottom = 130.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer"]
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Month"
+align = 1
+
+[node name="MonthSpin" type="SpinBox" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer"]
+margin_left = 90.0
+margin_right = 176.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Day"
+align = 1
+
+[node name="DaySpin" type="SpinBox" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer"]
+margin_left = 180.0
+margin_right = 267.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 87.0
+margin_bottom = 14.0
+text = "Year"
+align = 1
+
+[node name="YearSpin" type="SpinBox" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 87.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 9999.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AddAssignmentPopup/VBoxContainer"]
+margin_top = 140.0
+margin_right = 267.0
+margin_bottom = 182.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2"]
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Hour"
+align = 1
+
+[node name="HourSpin" type="SpinBox" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2"]
+margin_left = 90.0
+margin_right = 176.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Minute"
+align = 1
+
+[node name="MinuteSpin" type="SpinBox" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 86.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+max_value = 59.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2"]
+margin_left = 180.0
+margin_right = 267.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+margin_right = 87.0
+margin_bottom = 14.0
+text = "AM / PM"
+align = 1
+
+[node name="AMPMOptions" type="OptionButton" parent="AddAssignmentPopup/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 87.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+text = "AM"
+
+[node name="AddAssignmentWindowButton" type="Button" parent="AddAssignmentPopup/VBoxContainer"]
+margin_top = 192.0
+margin_right = 267.0
+margin_bottom = 212.0
+text = "Add"
+
+[node name="CancelAddAssignmentButton" type="Button" parent="AddAssignmentPopup"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -32.0
+margin_right = -16.0
+margin_bottom = -16.0
+text = "Cancel"
+
+[node name="Error" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.5
+margin_top = -29.0
+margin_right = 41.5
+margin_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+dialog_text = "This is an error Message!"
+
+[node name="ConfirmDeleteClass" type="ConfirmationDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.0
+margin_top = -68.0
+margin_right = 167.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 150, 52.5 )
+popup_exclusive = true
+window_title = "Delete Class?"
+dialog_text = "Are you sure you want to delete:"
+dialog_autowrap = true
+
+[connection signal="item_selected" from="LeftPanel/HBoxContainer/SortButtons" to="." method="_on_SortButtons_item_selected"]
+[connection signal="pressed" from="LeftPanel/HBoxContainer/AddClassButton" to="." method="_on_AddClassButton_pressed"]
+[connection signal="pressed" from="LeftPanel/HBoxContainer/AddAssignmentButton" to="." method="_on_AddAssignmentButton_pressed"]
+[connection signal="pressed" from="AddClassPopup/VBoxContainer/AddClassButton" to="." method="_on_PopupAddClassButton_pressed"]
+[connection signal="pressed" from="AddClassPopup/CancelAddClassButton" to="." method="_on_CancelAddClassButton_pressed"]
+[connection signal="pressed" from="AddAssignmentPopup/VBoxContainer/AddAssignmentWindowButton" to="." method="_on_AddAssignmentWindowButton_pressed"]
+[connection signal="pressed" from="AddAssignmentPopup/CancelAddAssignmentButton" to="." method="_on_CancelAddAssignmentButton_pressed"]
+[connection signal="confirmed" from="ConfirmDeleteClass" to="." method="_on_ConfirmDeleteClass_confirmed"]
