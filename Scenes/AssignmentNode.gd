@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 class_name AssignmentNode
 
 signal removeAssignment(assignmentNode)
@@ -7,9 +7,9 @@ var assignmentID:int = -1
 var className
 var assignment
 
-onready var classLabel:Label = $HBoxContainer/ClassPanel/Label
-onready var assignmentLabel:Label = $HBoxContainer/AssignmentPanel/Label
-onready var dateLabel:Label = $HBoxContainer/DatePanel/Label
+onready var classLabel:Label = $MarginContainer/HBoxContainer/ClassPanel/Label
+onready var assignmentLabel:Label = $MarginContainer/HBoxContainer/AssignmentPanel/Label
+onready var dateLabel:Label = $MarginContainer/HBoxContainer/DatePanel/Label
 
 func _ready():
 	if assignment == null:
